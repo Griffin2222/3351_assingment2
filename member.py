@@ -76,14 +76,6 @@ def member_manage():
     user_choice = input('Enter Choice: ')
     if(user_choice == '1'):
         add_member()
-    elif(user_choice == '3'):
-        if not members:
-            clear_screen()
-            print('There are no members yet!')
-            time.sleep(3)
-            member_manage()
-        else:
-            view_members()
     elif(user_choice == '2'):
         if not members:
             clear_screen()
@@ -92,6 +84,15 @@ def member_manage():
             member_manage()
         else:
             update_member()
+    elif(user_choice == '3'):
+        if not members:
+            clear_screen()
+            print('There are no members yet!')
+            time.sleep(3)
+            member_manage()
+        else:
+            view_members()
+    
     elif(user_choice == '4'):
         if not members:
             clear_screen()
