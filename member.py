@@ -1,5 +1,6 @@
-# member class
+from main import members, clear_screen, welcomePage, time
 
+# member class
 class Member():
     def __init__(self, name, address, phone):
         self.name = name
@@ -10,7 +11,47 @@ class Member():
         return f'Name: {self.name}\nAddress: {self.address}\nPhone: {self.phone}'
 
     
-def add_member(self, name, address, phone):
-    self.name = input('Enter name: ')
-    self.address = input('Enter address: ')
-    self.phone = input('Enter phone number: ')
+def add_member():
+    clear_screen()
+    name = input('Enter name: ')
+    address = input('Enter address: ')
+    phone = input('Enter phone number: ')
+    members.append(Member(name, address, phone))
+    member_manage()
+
+def view_members():
+    clear_screen()
+    print('Members List:')
+    for m in range(0, len(members)):
+        print(f'{m + 1}. {members[m].name}')
+    while True:
+        user_input = int(input('Enter Choice: '))
+        if user_input < len(members) + 1 and user_input > 0:
+            break
+    clear_screen()
+    print('Member Details:')
+    print(members[user_input - 1])
+    input('Press any key to return...')
+    member_manage()
+
+def member_manage():
+    clear_screen()
+    print('Member Management:')
+    print('1. Add Member')
+    print('2. Update Member')
+    print('3. View Member Details')
+    print('4. Remove Member')
+    print('5. Main Menu')
+    user_choice = input('Enter Choice: ')
+    if(user_choice == '1'):
+        add_member()
+    elif(user_choice == '3'):
+        if not members:
+            clear_screen()
+            print('There are no members yet!')
+            time.sleep(3)
+            member_manage()
+        else:
+            view_members()
+    elif(user_choice == '5'):
+        welcomePage()
