@@ -1,4 +1,9 @@
-from main import members, clear_screen, welcomePage, time
+import time, os
+
+members = []
+
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 # member class
 class Member():
@@ -10,7 +15,6 @@ class Member():
     def __str__(self):
         return f'Name: {self.name}\nAddress: {self.address}\nPhone: {self.phone}'
 
-    
 def add_member():
     clear_screen()
     name = input('Enter name: ')
@@ -54,4 +58,4 @@ def member_manage():
         else:
             view_members()
     elif(user_choice == '5'):
-        welcomePage()
+        return None

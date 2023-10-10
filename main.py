@@ -1,7 +1,6 @@
 """Retail Store Management System"""
-import sys, os, member, time;
+import sys, os, member
 
-members = []
 # members.append(member.Member('Marcus', '123 street', '1234567890'))
 
 def clear_screen():
@@ -18,7 +17,8 @@ def welcomePage():
     user_choice = input('Enter Choice: ')
 
     if(user_choice == '1'):
-        member.member_manage()
+        if(member.member_manage() == None):
+            welcomePage()
     elif(user_choice == '2'):
         pass
     elif(user_choice == '3'):
