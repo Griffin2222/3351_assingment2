@@ -23,6 +23,18 @@ def add_member():
     members.append(Member(name, address, phone))
     member_manage()
 
+def remove_member():
+    clear_screen()
+    print('Select a member to remove:')
+    for m in range(0, len(members)):
+        print(f'{m + 1}. {members[m].name}')
+    member_number = int(input('please enter the number corresponding to the member:'))
+    members.pop(member_number-1)
+    clear_screen()
+    print('Member has been removed')
+    time.sleep(3)
+    member_manage()
+
 def view_members():
     clear_screen()
     print('Members List:')
@@ -57,5 +69,13 @@ def member_manage():
             member_manage()
         else:
             view_members()
+    elif(user_choice == '4'):
+        if not members:
+            clear_screen()
+            print('There are no members to remove.')
+            time.sleep(3)
+            member_manage()
+        else:
+            remove_member()
     elif(user_choice == '5'):
         return None
