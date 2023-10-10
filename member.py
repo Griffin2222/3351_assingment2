@@ -50,6 +50,21 @@ def view_members():
     input('Press any key to return...')
     member_manage()
 
+def update_member():
+    clear_screen()
+    print('Select a member to update:')
+    for m in range(0, len(members)):
+        print(f'{m + 1}. {members[m].name}')
+    member_number = int(input('please enter the number corresponding to the member:'))
+    new_name = input('Enter New Name:')
+    new_address = input('Enter new Address:')
+    new_phonenum = input('Enter new Phone Number:')
+    members[member_number-1] = Member(new_name,new_address,new_phonenum)
+    print('Member info has been updated...')
+    time.sleep(3)
+    member_manage()
+
+
 def member_manage():
     clear_screen()
     print('Member Management:')
@@ -69,6 +84,14 @@ def member_manage():
             member_manage()
         else:
             view_members()
+    elif(user_choice == '2'):
+        if not members:
+            clear_screen()
+            print('No members to update')
+            time.sleep(3)
+            member_manage()
+        else:
+            update_member()
     elif(user_choice == '4'):
         if not members:
             clear_screen()
