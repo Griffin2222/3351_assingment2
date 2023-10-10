@@ -1,3 +1,5 @@
+#Make sure to work within your own branch and merge after pulling from main to prevent merge conflicts
+
 """Retail Store Management System"""
 import sys, os, member
 
