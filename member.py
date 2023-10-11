@@ -95,5 +95,3 @@ def member_manage():
             member_manage()
         else:
             remove_member()
-    elif(user_choice == '5'):
-        return None

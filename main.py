@@ -17,8 +17,8 @@ def welcomePage():
     user_choice = input('Enter Choice: ')
 
     if(user_choice == '1'):
-        if(member.member_manage() == None):
-            welcomePage()
+        member.member_manage()
+        welcomePage()
     elif(user_choice == '2'):
         pass
     elif(user_choice == '3'):
