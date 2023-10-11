@@ -26,6 +26,7 @@ def no_members():
 
 def add_member():
     clear_screen()
+    print('Add Member')
     name = input('Enter name: ')
     address = input('Enter address: ')
     phone = input('Enter phone number: ')
@@ -45,6 +46,7 @@ def view_members():
 def member_details():
     clear_screen()
     member = view_members()
+    clear_screen()
     print('Member Details:')
     print(member)
     input('Press any key to return...')
@@ -61,6 +63,7 @@ def update_member():
 
 def remove_member():
     clear_screen()
+    print('Remove Member:')
     members.remove(view_members())
     member_manage()
 
