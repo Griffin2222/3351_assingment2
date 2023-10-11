@@ -13,10 +13,10 @@ class Member():
     def __str__(self):
         return f'Name: {self.name}\nAddress: {self.address}\nPhone: {self.phone}'
     
-    def update(self, new_name, new_address, new_phone):
-        self.name = new_name
-        self.address = new_address
-        self.phone = new_phone
+    def update(self, name, address, phone):
+        self.name = name
+        self.address = address
+        self.phone = phone
 
 
 def add_member():
@@ -38,8 +38,8 @@ def view_members():
             return members[user_input - 1]
 
 def member_details():
-    member = view_members()
     clear_screen()
+    member = view_members()
     print('Member Details:')
     print(member)
     input('Press any key to return...')
