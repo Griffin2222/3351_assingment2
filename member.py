@@ -5,10 +5,11 @@ members = []
 
 # member class
 class Member():
-    def __init__(self, name, address, phone):
+    def __init__(self, name, address, phone, transactions=None):
         self.name = name
         self.address = address
         self.phone = phone
+        self.transactions = []
 
     def __str__(self):
         return f'Name: {self.name}\nAddress: {self.address}\nPhone: {self.phone}'
@@ -26,6 +27,7 @@ def no_members():
 
 def add_member():
     clear_screen()
+    print('Add Member')
     name = input('Enter name: ')
     address = input('Enter address: ')
     phone = input('Enter phone number: ')
@@ -45,6 +47,7 @@ def view_members():
 def member_details():
     clear_screen()
     member = view_members()
+    clear_screen()
     print('Member Details:')
     print(member)
     input('Press any key to return...')
@@ -53,6 +56,7 @@ def member_details():
 def update_member():
     clear_screen()
     member = view_members()
+    clear_screen()
     name = input('Enter name: ')
     address = input('Enter address: ')
     phone = input('Enter phone number: ')
@@ -65,7 +69,9 @@ def remove_member():
     member_manage()
 
 def purchase_history():
-    pass
+    member = view_members()
+    # for purchase in member.transactions:
+    #     print(purchase)
 
 def member_manage():
     clear_screen()
@@ -75,7 +81,7 @@ def member_manage():
     print('3. View Member Details')
     print('4. Remove Member')
     print('5. View Purchase History')
-    print('6. Main Menu')
+    print('Any other key to return to the main menu')
     user_choice = input('Enter Choice: ')
     if(user_choice == '1'):
         add_member()
@@ -92,11 +98,13 @@ def member_manage():
             no_members()
         else:
             member_details()
-    
     elif(user_choice == '4'):
         if not members:
             no_members()
         else:
             remove_member()
     elif(user_choice == '5'):
-        pass
+        if not members:
+            no_members()
+        else:
+            purchase_history()

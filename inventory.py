@@ -6,14 +6,18 @@ class Inventory:
         pass
 
 def add_item():
+    clear_screen()
+    print('Add Item')
     inventory_manage()
 
 def remove_item():
-    item = input('Enter to search for').lower()
-    print(item)
-    time.sleep()
+    clear_screen()
+    item = input('Enter item to remove: ').lower()
+    inventory_manage()
 
 def item_search():
+    clear_screen()
+    item = input('Enter item to search for: ')
     inventory_manage()
 
 def category_list():
@@ -26,6 +30,7 @@ def inventory_manage():
     print('2. Remove Item')
     print('3: Item Search')
     print('4: Category List')
+    print('Any other key to return to the main menu')
     user_choice = input('Enter Choice: ')
     if(user_choice == '1'):
         add_item()
@@ -35,5 +40,3 @@ def inventory_manage():
         item_search()
     elif(user_choice == '4'):
         category_list()
-    else:
-        return None

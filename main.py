@@ -13,7 +13,7 @@ def welcomePage():
     print('2. Item Management')
     print('3. Inventory Viewing')
     print('4. Transaction Processing')
-    print('5. Exit')
+    print('Any other key to exit')
     user_choice = input('Enter Choice: ')
 
     if(user_choice == '1'):
