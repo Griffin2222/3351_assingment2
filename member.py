@@ -1,9 +1,7 @@
 import time, os
+from shared import clear_screen
 
 members = []
-
-def clear_screen():
-    os.system('cls' if os.name == 'nt' else 'clear')
 
 # member class
 class Member():
@@ -14,6 +12,12 @@ class Member():
 
     def __str__(self):
         return f'Name: {self.name}\nAddress: {self.address}\nPhone: {self.phone}'
+    
+    def update(self, new_name, new_address, new_phone):
+        self.name = new_name
+        self.address = new_address
+        self.phone = new_phone
+
 
 def add_member():
     clear_screen()
@@ -21,18 +25,6 @@ def add_member():
     address = input('Enter address: ')
     phone = input('Enter phone number: ')
     members.append(Member(name, address, phone))
-    member_manage()
-
-def remove_member():
-    clear_screen()
-    print('Select a member to remove:')
-    for m in range(0, len(members)):
-        print(f'{m + 1}. {members[m].name}')
-    member_number = int(input('please enter the number corresponding to the member:'))
-    members.pop(member_number-1)
-    clear_screen()
-    print('Member has been removed')
-    time.sleep(3)
     member_manage()
 
 def view_members():
@@ -43,28 +35,29 @@ def view_members():
     while True:
         user_input = int(input('Enter Choice: '))
         if user_input < len(members) + 1 and user_input > 0:
-            break
+            return members[user_input - 1]
+
+def member_details():
+    member = view_members()
     clear_screen()
     print('Member Details:')
-    print(members[user_input - 1])
+    print(member)
     input('Press any key to return...')
     member_manage()
 
 def update_member():
     clear_screen()
-    print('Select a member to update:')
-    for m in range(0, len(members)):
-        print(f'{m + 1}. {members[m].name}')
-    member_number = int(input('please enter the number corresponding to the member:'))
-    new_name = input('Enter New Name:')
-    new_address = input('Enter new Address:')
-    new_phonenum = input('Enter new Phone Number:')
-    members[member_number-1] = Member(new_name,new_address,new_phonenum)
-    print('Member info has been updated...')
-    time.sleep(3)
+    member = view_members()
+    name = input('Enter name: ')
+    address = input('Enter address: ')
+    phone = input('Enter phone number: ')
+    member.update(name, address, phone)
     member_manage()
 
-
+def remove_member():
+    clear_screen()
+    members.remove(view_members())
+    member_manage()
 
 def member_manage():
     clear_screen()
@@ -80,7 +73,7 @@ def member_manage():
     elif(user_choice == '2'):
         if not members:
             clear_screen()
-            print('No members to update')
+            print('There are no members yet!')
             time.sleep(3)
             member_manage()
         else:
@@ -92,7 +85,7 @@ def member_manage():
             time.sleep(3)
             member_manage()
         else:
-            view_members()
+            member_details()
     
     elif(user_choice == '4'):
         if not members:

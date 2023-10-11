@@ -2,6 +2,7 @@
 
 """Retail Store Management System"""
 import sys, os, member
+from shared import clear_screen
 
 # members.append(member.Member('Marcus', '123 street', '1234567890'))
 
