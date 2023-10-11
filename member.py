@@ -65,6 +65,7 @@ def update_member():
     member_manage()
 
 
+
 def member_manage():
     clear_screen()
     print('Member Management:')
