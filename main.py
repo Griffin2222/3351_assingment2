@@ -1,13 +1,10 @@
 #Make sure to work within your own branch and merge after pulling from main to prevent merge conflicts
 
 """Retail Store Management System"""
-import sys, os, member
+import sys, member
 from shared import clear_screen
 
 # members.append(member.Member('Marcus', '123 street', '1234567890'))
-
-def clear_screen():
-    os.system('cls' if os.name == 'nt' else 'clear')
 
 def welcomePage():
     clear_screen()
