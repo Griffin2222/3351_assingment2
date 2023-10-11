@@ -1,7 +1,7 @@
 #Make sure to work within your own branch and merge after pulling from main to prevent merge conflicts
 
 """Retail Store Management System"""
-import sys, member
+import sys, member, item, inventory, transaction
 from shared import clear_screen
 
 # members.append(member.Member('Marcus', '123 street', '1234567890'))
@@ -17,14 +17,17 @@ def welcomePage():
     user_choice = input('Enter Choice: ')
 
     if(user_choice == '1'):
-        if(member.member_manage() == None):
-            welcomePage()
+        member.member_manage()
+        welcomePage()
     elif(user_choice == '2'):
-        pass
+        item.item_manage()
+        welcomePage()
     elif(user_choice == '3'):
-        pass
+        inventory.inventory_manage()
+        welcomePage()
     elif(user_choice == '4'):
-        pass
+        transaction.transaction_manage()
+        welcomePage()
     else:
         clear_screen()
         print('Goodbye! Thank you for using our Retail Store Management Program!')

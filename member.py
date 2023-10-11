@@ -100,5 +100,3 @@ def member_manage():
             remove_member()
     elif(user_choice == '5'):
         pass
-    else:
-        return None

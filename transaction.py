@@ -1,3 +1,5 @@
+from shared import clear_screen
+
 class Transaction:
     def __init(self, member, cost):
         self.member = member
@@ -11,3 +13,12 @@ def remove_item():
 
 def calculate_total():
     pass
+
+def transaction_manage():
+    print('Transaction Processing:')
+    print('1.')
+    user_choice = input('Enter Choice: ')
+    if(user_choice == '1'):
+        pass
+    else:
+        return None
