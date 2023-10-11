@@ -1,4 +1,4 @@
-import time, os
+import time
 from shared import clear_screen
 
 members = []
