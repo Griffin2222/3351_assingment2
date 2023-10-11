@@ -13,11 +13,16 @@ class Member():
     def __str__(self):
         return f'Name: {self.name}\nAddress: {self.address}\nPhone: {self.phone}'
     
-    def update(self, new_name, new_address, new_phone):
-        self.name = new_name
-        self.address = new_address
-        self.phone = new_phone
+    def update(self, name, address, phone):
+        self.name = name
+        self.address = address
+        self.phone = phone
 
+def no_members():
+    clear_screen()
+    print('There are no members yet!')
+    time.sleep(3)
+    member_manage()
 
 def add_member():
     clear_screen()
@@ -38,8 +43,8 @@ def view_members():
             return members[user_input - 1]
 
 def member_details():
-    member = view_members()
     clear_screen()
+    member = view_members()
     print('Member Details:')
     print(member)
     input('Press any key to return...')
@@ -59,6 +64,9 @@ def remove_member():
     members.remove(view_members())
     member_manage()
 
+def purchase_history():
+    pass
+
 def member_manage():
     clear_screen()
     print('Member Management:')
@@ -66,7 +74,8 @@ def member_manage():
     print('2. Update Member')
     print('3. View Member Details')
     print('4. Remove Member')
-    print('5. Main Menu')
+    print('5. View Purchase History')
+    print('6. Main Menu')
     user_choice = input('Enter Choice: ')
     if(user_choice == '1'):
         add_member()
@@ -80,18 +89,16 @@ def member_manage():
             update_member()
     elif(user_choice == '3'):
         if not members:
-            clear_screen()
-            print('There are no members yet!')
-            time.sleep(3)
-            member_manage()
+            no_members()
         else:
             member_details()
     
     elif(user_choice == '4'):
         if not members:
-            clear_screen()
-            print('There are no members to remove.')
-            time.sleep(3)
-            member_manage()
+            no_members()
         else:
             remove_member()
+    elif(user_choice == '5'):
+        pass
+    else:
+        return None

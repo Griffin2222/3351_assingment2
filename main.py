@@ -25,7 +25,7 @@ def welcomePage():
         pass
     elif(user_choice == '4'):
         pass
-    elif(user_choice == '5'):
+    else:
         clear_screen()
         print('Goodbye! Thank you for using our Retail Store Management Program!')
         sys.exit()
