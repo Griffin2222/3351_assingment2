@@ -23,14 +23,19 @@ def remove_item():
     for i in range(0, len(items)):
         print(f'{i + 1}. {items[i].name}')
     item_num = int(input('Enter item number to remove: '))
-    del items[item_num-1]
+    if item_num < len(items)+1:
+        del items[item_num-1]
+    else:
+        while item_num > len(items)+1:
+            item_num = int(input('Enter valid item number to remove: '))
     print('item has been removed...')
-    time.sleep(3)
+    time.sleep(2)
     inventory_manage()
 
 def item_search():
     clear_screen()
     item = input('Enter item to search for: ')
+
     inventory_manage()
 
 def category_list():
