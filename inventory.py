@@ -22,12 +22,10 @@ def remove_item():
     clear_screen()
     for i in range(0, len(items)):
         print(f'{i + 1}. {items[i].name}')
-    item_num = int(input('Enter item number to remove: '))
-    if item_num < len(items)+1:
-        del items[item_num-1]
-    else:
-        while item_num > len(items)+1:
-            item_num = int(input('Enter valid item number to remove: '))
+    item_num = int(input('Enter item number to remove: '))  
+    while item_num > len(items)+1:
+        item_num = int(input('Enter item number to remove: '))
+    del items[item_num-1]
     print('item has been removed...')
     time.sleep(2)
     inventory_manage()
@@ -37,7 +35,7 @@ def item_search():
     item = input('Enter item to search for: ').lower()
     for i in range(0, len(items)):
         ticker = False
-        if item == items[i].name:
+        if item.lower() == items[i].name.lower():
             print(f'Item {items[i].name} is currently in the system...')
             time.sleep(2)
             ticker = True
@@ -45,13 +43,14 @@ def item_search():
         print('item has not been found')
         time.sleep(2)
     search_again = int(input('enter 1 to search again or 2 to return to inventory management: '))
+    while search_again != 1 and search_again != 2:
+            search_again = int(input('enter 1 to search again or 2 to return to inventory management: '))
     if search_again == 1:
         item_search()
     elif search_again == 2:          
         inventory_manage()
-    else:
-        while search_again != 1 and search_again != 2:
-            search_again = int(input('enter 1 to search again or 2 to return to inventory management: '))
+    
+       
 
 
 def category_list():
