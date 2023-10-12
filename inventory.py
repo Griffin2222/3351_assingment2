@@ -8,6 +8,8 @@ class Inventory:
 def add_item():
     clear_screen()
     print('Add Item')
+    name = input('Item Name: ')
+    category = input('Item Category: ')
     inventory_manage()
 
 def remove_item():
