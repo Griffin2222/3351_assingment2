@@ -35,8 +35,24 @@ def remove_item():
 def item_search():
     clear_screen()
     item = input('Enter item to search for: ')
+    for i in range(0, len(items)):
+        ticker = False
+        if item == items[i].name:
+            print(f'item {items[i].name} is currently in the system...')
+            time.sleep(2)
+            ticker = True
+    if ticker == False:
+        print('item has not been found')
+        time.sleep(2)
+    search_again = int(input('enter 1 to search again or 2 to return to inventory management: '))
+    if search_again == 1:
+        item_search()
+    elif search_again == 2:          
+        inventory_manage()
+    else:
+        while search_again != 1 and search_again != 2:
+            search_again = int(input('enter 1 to search again or 2 to return to inventory management: '))
 
-    inventory_manage()
 
 def category_list():
     inventory_manage()
