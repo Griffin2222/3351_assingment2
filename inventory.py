@@ -54,6 +54,19 @@ def item_search():
 
 
 def category_list():
+    global items
+    categories = {}
+    for item in items:
+        category = item.category
+        if category not in categories:
+            categories[category] = []
+        categories[category].append(item)
+    clear_screen()
+    for category, items in categories.items():
+        print(f"Category: {category}")
+        for item in items:
+            print(f"- {item.name}")
+    input("press any button to return to inventory management...")
     inventory_manage()
 
 def inventory_manage():
