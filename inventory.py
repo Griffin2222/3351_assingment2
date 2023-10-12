@@ -1,11 +1,14 @@
 from shared import clear_screen
 import time
 
+
 items = []
 class Inventory:
-    def __init__(self, name, category):
+    def __init__(self, name, category, stock, price):
         self.name = name
         self.category = category
+        self.stock = stock
+        self.price = price
         
 
 def add_item():
@@ -13,7 +16,7 @@ def add_item():
     print('Add Item: ')
     name = input('Enter item name: ')
     category = input('Enter item category: ')
-    items.append(Inventory(name, category))
+    items.append(Inventory(name, category, 0, 0))
     print(f'item {name} has been added...')
     time.sleep(3)
     inventory_manage()
