@@ -66,6 +66,9 @@ def update_member():
 def remove_member():
     clear_screen()
     members.remove(view_members())
+    clear_screen()
+    print('member has been removed')
+    time.sleep(3)
     member_manage()
 
 def purchase_history():
