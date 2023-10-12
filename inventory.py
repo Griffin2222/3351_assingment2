@@ -1,18 +1,31 @@
 from shared import clear_screen
 import time
 
+items = []
 class Inventory:
-    def __init__(self):
-        pass
+    def __init__(self, name, category):
+        self.name = name
+        self.category = category
+        
 
 def add_item():
     clear_screen()
-    print('Add Item')
+    print('Add Item:')
+    name = input('Enter item name:')
+    category = input('Enter item category:')
+    items.append(Inventory(name, category))
+    print(f'item {name} has been added...')
+    time.sleep(3)
     inventory_manage()
 
 def remove_item():
     clear_screen()
-    item = input('Enter item to remove: ').lower()
+    for i in range(0, len(items)):
+        print(f'{i + 1}. {items[i].name}')
+    item_num = int(input('Enter item number to remove: '))
+    del items[item_num-1]
+    print('item has been removed...')
+    time.sleep(3)
     inventory_manage()
 
 def item_search():
