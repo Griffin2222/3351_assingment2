@@ -10,9 +10,9 @@ class Inventory:
 
 def add_item():
     clear_screen()
-    print('Add Item:')
-    name = input('Enter item name:')
-    category = input('Enter item category:')
+    print('Add Item: ')
+    name = input('Enter item name: ')
+    category = input('Enter item category: ')
     items.append(Inventory(name, category))
     print(f'item {name} has been added...')
     time.sleep(3)
@@ -34,11 +34,11 @@ def remove_item():
 
 def item_search():
     clear_screen()
-    item = input('Enter item to search for: ')
+    item = input('Enter item to search for: ').lower()
     for i in range(0, len(items)):
         ticker = False
         if item == items[i].name:
-            print(f'item {items[i].name} is currently in the system...')
+            print(f'Item {items[i].name} is currently in the system...')
             time.sleep(2)
             ticker = True
     if ticker == False:
