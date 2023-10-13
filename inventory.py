@@ -32,6 +32,7 @@ def inventory_manage():
     print('4: Category List')
     print('Any other key to return to the main menu')
     user_choice = input('Enter Choice: ')
+    
     if(user_choice == '1'):
         add_item()
     elif(user_choice == '2'):

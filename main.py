@@ -30,7 +30,7 @@ def welcomePage():
         welcomePage()
     else:
         clear_screen()
-        print('Goodbye! Thank you for using our Retail Store Management Program!')
+        print('Goodbye! Thank you for using our Retail Store Management Program!\n')
         sys.exit()
 
 welcomePage()

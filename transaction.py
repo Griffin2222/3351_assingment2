@@ -22,6 +22,7 @@ def transaction_manage():
     print('2. Remove An Item')
     print('3. Calculate Total')
     print('Any other key to return to the main menu')
+    
     user_choice = input('Enter Choice: ')
     if(user_choice == '1'):
         add_item()
@@ -29,3 +30,4 @@ def transaction_manage():
         remove_item()
     elif(user_choice == '3'):
         calculate_total()
+    
