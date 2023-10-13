@@ -4,8 +4,6 @@
 import sys, member, item, inventory, transaction
 from shared import clear_screen
 
-# members.append(member.Member('Marcus', '123 street', '1234567890'))
-
 def welcomePage():
     clear_screen()
     print('Welcome to the Retail Store Management Program!')
