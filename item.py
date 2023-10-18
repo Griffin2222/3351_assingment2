@@ -1,47 +1,65 @@
-from shared import clear_screen
-from inventory import Inventory, items
+from shared import clear_screen  # Importing the clear_screen function to clear the console.
+from inventory import Inventory, items  # Importing Inventory class and items list from another module.
 
-
-
+# Class definition for Item objects.
 class Item:
-    def __init__(self,name, stock, price):
-        self.stock = stock
-        self.price = price
-        Inventory.name = name
-    
-    def update(self, stock, price):
-        self.stock = stock
-        self.price = price
+    # Constructor for initializing new Item objects.
+    def __init__(self, name, stock, price):
+        self.stock = stock  # Stock quantity of the item.
+        self.price = price  # Price of the item.
+        Inventory.name = name  # Assigning the name to the Inventory's name attribute. 
 
+    # Method to update stock and price of an item.
+    def update(self, stock, price):
+        self.stock = stock  # Updating the stock quantity.
+        self.price = price  # Updating the price.
+
+# Function to manage items.
 def item_manage():
-    clear_screen()
+    clear_screen()  # Clearing the console screen.
     print('Item Management:')
     print('1. Update Item')
     print('2. View Stocks and Prices')
     print('Any other key to return to the main menu')
-    user_choice = input('Enter Choice: ')
-    if(user_choice == '1'):
+    
+    # Taking the user's choice as input.
+    user_choice = input('Enter Choice: ')  
+    
+    # Redirecting based on user's choice.
+    if user_choice == '1':
         update_item()
-    elif(user_choice == '2'):
+    elif user_choice == '2':
         view_stock()
 
-
+# Function to update an existing item.
 def update_item():
     print("items:")
+    
+    # Displaying all items for the user to choose from.
     for i in range(0, len(items)):
         print(f'{i + 1}. {items[i].name}')
-    selection = int(input('select a item to update...'))
-    print(f"Please change the values for {items[selection-1].name}")
-    price = input("Enter the new price: ")
-    stock = input("Please enter new stock quantity: ")
-    items[selection-1].price = price
-    items[selection-1].stock = stock
-    item_manage()
+    
+    # Taking the user's choice as input.
+    selection = int(input('select a item to update...'))  
+    
+    # Prompting user for new values.
+    print(f"Please change the values for {items[selection-1].name}")  
+    price = input("Enter the new price: ")  # Taking new price as input.
+    stock = input("Please enter new stock quantity: ")  # Taking new stock quantity as input.
+    
+    # Updating the item based on user's input.
+    items[selection-1].price = price  
+    items[selection-1].stock = stock  
+    item_manage()  # Redirecting back to item management menu.
 
-
+# Function to view stock and price of all items.
 def view_stock():
     print("items")
+    
+    # Looping through all items to display their details.
     for i in range(0, len(items)):
         print(f'{i + 1}. {items[i].name}, Stock: {items[i].stock}, Price: ${items[i].price}')
-    input('Press any key to return to item management...')
-    item_manage()
+    
+    # Waiting for the user's keypress to proceed.
+    input('Press any key to return to item management...')  
+    item_manage()  # Redirecting back to item management menu.
