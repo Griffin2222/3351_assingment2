@@ -34,10 +34,11 @@ def no_members():
 # Function to add a new member.
 def add_member():
     duplicate = True
-    while duplicate:
+    while duplicate: # error handling
         clear_screen()
         print('Add Member')
         name = input('Enter name: ').capitalize()
+        # error handling for empty member name or duplicate member
         if name == '':
             continue
         elif(members):
@@ -65,7 +66,7 @@ def view_members():
         for m in range(0, len(members)):  # Looping through all members.
             print(f'{m + 1}. {members[m].name}')
         # Loop until a valid selection is made.
-        try:
+        try: # error handling
             user_input = int(input('Enter Choice: '))
             if user_input < len(members) + 1 and user_input > 0:
                 return members[user_input - 1]  # Returning the selected member object.
@@ -99,7 +100,7 @@ def remove_member():
     time.sleep(3)  # Pausing execution for 3 seconds.
     member_manage()  # Redirecting back to member management menu.
 
-# Function to view purchase history of a member (commented out parts are placeholders for future code).
+# Function to view purchase history of a member.
 def purchase_history():
     sel_member = view_members()  # Fetching the selected member.
     clear_screen()
@@ -118,8 +119,6 @@ def purchase_history():
 # Main function for member management options.
 def member_manage():
     clear_screen()
-    # members.append(Member('Marcus', '123 Street', '41634234'))
-    # members.append(Member('Gdf', '543 Street', '416314135'))
     print('Member Management:')
     print('1. Add Member')
     print('2. Update Member')
@@ -149,4 +148,4 @@ def member_manage():
         if not members:  # Check if members list is empty.
             no_members()
         else:
-            purchase_history()
+            purchase_history() # Displays member purchase history.
