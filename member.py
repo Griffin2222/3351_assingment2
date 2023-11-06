@@ -115,6 +115,7 @@ def purchase_history():
             print(f'{count}: {purchase}')
             count += 1
         input('Enter any key to return: ')
+        member_manage()
 
 # Main function for member management options.
 def member_manage():
