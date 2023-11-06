@@ -17,25 +17,22 @@ class Item:
 
 # Function to manage items.
 def item_manage():
-    clear_screen()  # Clearing the console screen.
-    print('Item Management:')
-    print('1. Update Item')
-    print('2. View Stocks and Prices')
-    print('Any other key to return to the main menu')
-    
-    # Taking the user's choice as input.
-    user_choice = input('Enter Choice: ')  
-    
-    # Redirecting based on user's choice.
-    if user_choice == '1':
-        if(not items):
-            no_items()
-        else:
+    if(not items):
+        no_items()
+    else:
+        clear_screen()  # Clearing the console screen.
+        print('Item Management:')
+        print('1. Update Item')
+        print('2. View Stocks and Prices')
+        print('Any other key to return to the main menu')
+        
+        # Taking the user's choice as input.
+        user_choice = input('Enter Choice: ')  
+        
+        # Redirecting based on user's choice.
+        if user_choice == '1':
             update_item()
-    elif user_choice == '2':
-        if(not items):
-            no_items()
-        else:    
+        elif user_choice == '2':
             view_stock()
 
 # Function to update an existing item.
@@ -69,17 +66,20 @@ def update_item():
 
     while True: # error handling
         clear_screen()
-        print(f"Please change the values for {items[selection-1].name}")  
+        print(f"Enter new values for {items[selection-1].name}:")  
         try: # error handling
             stock = int(input("Please enter new stock quantity: "))  # Taking new stock quantity as input.
             if(stock > 0):
                 break
         except ValueError:
             pass
+
+    category = input('Please enter the new category name: ').capitalize()
     
     # Updating the item based on user's input.
     items[selection-1].price = price  
     items[selection-1].stock = stock  
+    items[selection-1].category = category
     item_manage()  # Redirecting back to item management menu.
 
 # Function to view stock and price of all items.
@@ -91,14 +91,14 @@ def view_stock():
     # Looping through all items to display their details.
     else:
         for i in range(0, len(items)):
-            print(f'{i + 1}. {items[i].name}, Stock: {items[i].stock}, Price: ${items[i].price}')
+            print(f'{i + 1}. {items[i].name}, Stock: {items[i].stock}, Price: ${items[i].price:.2f}')
         
         # Waiting for the user's keypress to proceed.
-        input('Press any key to return to item management...')  
+        input('Enter any key to return to item management...')  
         item_manage()  # Redirecting back to item management menu.
 
 def no_items():
     clear_screen()
-    print('There are no items yet!')
+    print('There are no items in the system...')
     time.sleep(3)  # Pausing execution for 3 seconds.
-    item_manage()  # Redirecting back to member management menu.
+    # Redirecting back to main menu.

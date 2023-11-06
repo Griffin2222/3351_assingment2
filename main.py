@@ -36,7 +36,7 @@ def welcomePage():
         welcomePage()  # Return to the welcome page after completion.
         
     elif user_choice == '4':  # Transaction Processing
-        transaction.transaction_manage()  # Call to function handling transaction management.
+        transaction.sel_trans_member()  # Call to function handling transaction management.
         welcomePage()  # Return to the welcome page after completion.
         
     else:  # Any other key to exit the application.
