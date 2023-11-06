@@ -1,5 +1,6 @@
 from shared import clear_screen  # Importing the clear_screen function to clear the console.
 from inventory import Inventory, items  # Importing Inventory class and items list from another module.
+import time
 
 # Class definition for Item objects.
 class Item:
@@ -27,25 +28,54 @@ def item_manage():
     
     # Redirecting based on user's choice.
     if user_choice == '1':
-        update_item()
+        if(not items):
+            no_items()
+        else:
+            update_item()
     elif user_choice == '2':
-        view_stock()
+        if(not items):
+            no_items()
+        else:    
+            view_stock()
 
 # Function to update an existing item.
 def update_item():
-    print("items:")
+    while True: # error handling
+        clear_screen()
+        print("Items: ")
     
     # Displaying all items for the user to choose from.
-    for i in range(0, len(items)):
-        print(f'{i + 1}. {items[i].name}')
+        for i in range(0, len(items)):
+            print(f'{i + 1}. {items[i].name}')
     
     # Taking the user's choice as input.
-    selection = int(input('select a item to update...'))  
+        try: # error handling
+            selection = int(input('Select a item to update: '))
+            if selection < len(items) + 1 and selection > 0:
+                break
+        except ValueError:
+            pass
     
-    # Prompting user for new values.
-    print(f"Please change the values for {items[selection-1].name}")  
-    price = input("Enter the new price: ")  # Taking new price as input.
-    stock = input("Please enter new stock quantity: ")  # Taking new stock quantity as input.
+    # Prompting user for new values
+    while True: # error handling
+        clear_screen()
+        print(f"Please change the values for {items[selection-1].name}")  
+        try: # error handling
+            price = float(input("Enter the new price: "))  # Taking new price as input.
+            if(price > 0):
+                break
+        except ValueError:
+            pass
+
+    while True: # error handling
+        clear_screen()
+        print(f"Please change the values for {items[selection-1].name}")  
+        try: # error handling
+            stock = int(input("Please enter new stock quantity: "))  # Taking new stock quantity as input.
+            if(stock > 0):
+                break
+        except ValueError:
+            pass
     
     # Updating the item based on user's input.
     items[selection-1].price = price  
@@ -54,12 +84,21 @@ def update_item():
 
 # Function to view stock and price of all items.
 def view_stock():
-    print("items")
-    
+    clear_screen()
+    print("Items: ")
+    if(not items): # error handling
+        no_items()
     # Looping through all items to display their details.
-    for i in range(0, len(items)):
-        print(f'{i + 1}. {items[i].name}, Stock: {items[i].stock}, Price: ${items[i].price}')
-    
-    # Waiting for the user's keypress to proceed.
-    input('Press any key to return to item management...')  
-    item_manage()  # Redirecting back to item management menu.
+    else:
+        for i in range(0, len(items)):
+            print(f'{i + 1}. {items[i].name}, Stock: {items[i].stock}, Price: ${items[i].price}')
+        
+        # Waiting for the user's keypress to proceed.
+        input('Press any key to return to item management...')  
+        item_manage()  # Redirecting back to item management menu.
+
+def no_items():
+    clear_screen()
+    print('There are no items yet!')
+    time.sleep(3)  # Pausing execution for 3 seconds.
+    item_manage()  # Redirecting back to member management menu.

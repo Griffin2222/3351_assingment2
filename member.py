@@ -31,7 +31,6 @@ def no_members():
     time.sleep(3)  # Pausing execution for 3 seconds.
     member_manage()  # Redirecting back to member management menu.
 
-
 # Function to add a new member.
 def add_member():
     clear_screen()
@@ -44,15 +43,18 @@ def add_member():
 
 # Function to display and select members.
 def view_members():
-    clear_screen()
-    print('Members List:')
-    for m in range(0, len(members)):  # Looping through all members.
-        print(f'{m + 1}. {members[m].name}')
-    while True:  # Loop until a valid selection is made.
-        user_input = int(input('Enter Choice: '))
-        if user_input < len(members) + 1 and user_input > 0:
-            return members[user_input - 1]  # Returning the selected member object.
-
+    while True: # error handling
+        clear_screen()
+        print('Members List:')
+        for m in range(0, len(members)):  # Looping through all members.
+            print(f'{m + 1}. {members[m].name}')
+        # Loop until a valid selection is made.
+            try:
+                user_input = int(input('Enter Choice: '))
+                if user_input < len(members) + 1 and user_input > 0:
+                    return members[user_input - 1]  # Returning the selected member object.
+            except ValueError:
+                pass
 
 # Function to display a selected member's details.
 def member_details():
